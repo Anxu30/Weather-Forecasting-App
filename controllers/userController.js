@@ -73,7 +73,7 @@ exports.favData=favData;
 
 const favCity=async (req,res,next)=>{
   const array=[];
-  const key='3c7894b1fd7351cb7a049377dfd25fa6';
+  const key='***************b1fd7351cb7a049377***********';
  const data=await Auth.findOne({email:req.session.authMail});
 for(let i=0;i<data.fav_cities.length;i++){
  const favcity=data.fav_cities[i];
@@ -126,5 +126,6 @@ const removeFavCity = async (req, res, next) => {
 }
 
 exports.removeFavCity = removeFavCity;
+
 
 
