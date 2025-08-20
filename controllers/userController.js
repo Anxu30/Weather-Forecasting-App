@@ -111,7 +111,7 @@ const removeFavCity = async (req, res, next) => {
       return res.status(404).json({ error: 'User not found' });
     }
 
-    // Remove the city from fav_cities array
+    
     await Auth.findOneAndUpdate(
       { email: req.session.authMail },
       { $pull: { fav_cities: city } }
@@ -126,3 +126,4 @@ const removeFavCity = async (req, res, next) => {
 }
 
 exports.removeFavCity = removeFavCity;
+
