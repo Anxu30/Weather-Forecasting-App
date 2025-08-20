@@ -10,7 +10,7 @@ const Home=(req,res,next)=>{
 }
 exports.Home=Home;
 const weatherData=(req,res,next)=>{
-  const key='3c7894b1fd7351cb7a049377dfd25fa6';
+  const key='*****894b1fd******cb7a049377dfd*******';
   const city=req.query.city;
   const url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}`
 axios.get(url).then((response)=>{
@@ -126,4 +126,5 @@ const removeFavCity = async (req, res, next) => {
 }
 
 exports.removeFavCity = removeFavCity;
+
 
