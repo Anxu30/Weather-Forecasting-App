@@ -1,0 +1,43 @@
+<nav class="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 shadow-lg py-4 px-2">
+  <div class="container mx-auto flex justify-between items-center">
+    <div class="flex items-center space-x-3">
+      <div class="bg-white rounded-full p-2 shadow-md">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h10a4 4 0 100-8h-1.26A8 8 0 103 15z" />
+        </svg>
+      </div>
+      <span class="text-3xl font-extrabold tracking-tight text-white drop-shadow-lg">WeatherApp</span>
+    </div>
+    <ul class="flex space-x-6 items-center">
+      <li>
+        <a href="/" class="relative px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition duration-200 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-white">
+          Home
+        </a>
+      </li>
+      <% if(!login){ %>
+        <li>
+          <a href="/login" class=" relative px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition duration-200 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-white">
+            Login
+          </a>
+        </li>
+      <% } %>
+      <% if(login){ %>
+        <li>
+          <a href="/about" class="relative px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition duration-200 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-white">
+            About
+          </a>
+        </li>
+        <li>
+          <a href="/favorites" class="relative px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition duration-200 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-white">
+            Favourites
+          </a>
+        </li>
+        <li>
+          <a href="/logout" class="relative px-4 py-2 rounded-lg font-semibold bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white shadow-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-pink-200">
+            Logout
+          </a>
+        </li>
+      <% } %>
+    </ul>
+  </div>
+</nav>

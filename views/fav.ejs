@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favorite Cities</title>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 min-h-screen relative overflow-hidden">
+  <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+    <div class="absolute top-40 left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+  </div>
+  <%- include('../partials/nav.ejs') %>
+
+  <div class="relative z-10 flex flex-col items-center justify-center min-h-screen">
+    <div class="w-full max-w-3xl p-8 bg-white rounded-lg shadow-lg mt-16">
+      <h1 class="text-4xl font-bold mb-8 text-gray-800 text-center">Your Favorite Cities</h1>
+      <% if (arr && arr.length) { %>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <% arr.forEach((h) => { %>
+            <div class="bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl shadow-md p-6 flex flex-col items-center hover:scale-105 transition-transform">
+              <div class="text-5xl mb-2">
+                <%= h.city %>
+              </div>
+              <div class="text-lg text-gray-600 mb-1 font-semibold">
+                <%= h.country %>
+              </div>
+              <div class="flex items-center space-x-2 mb-2">
+                <span class="text-3xl font-bold text-blue-700"><%= h.temp %>°C</span>
+              </div>
+              <div class="flex items-center space-x-2 mb-2">
+                <span class="text-gray-500">Humidity:</span>
+                <span class="font-medium"><%= h.humid %>%</span>
+              </div>
+              <div class="text-xs text-gray-400 mt-2">Weather ID: <%= h.id %></div>
+              <button 
+                onclick="removeFavorite('<%= h.city %>')" 
+                class="mt-3 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors duration-200 flex items-center space-x-2"
+              >
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+                <span>Remove from Favorites</span>
+              </button>
+            </div>
+          <% }) %>
+        </div>
+      <% } else { %>
+        <div class="text-center text-gray-500 text-lg py-12">
+          You have no favorite cities yet.
+        </div>
+      <% } %>
+    </div>
+  </div>
+
+  <style>
+    @keyframes blob {
+      0% { transform: translate(0px, 0px) scale(1); }
+      33% { transform: translate(30px, -50px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
+      100% { transform: translate(0px, 0px) scale(1); }
+    }
+    .animate-blob {
+      animation: blob 7s infinite;
+    }
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+    .animation-delay-4000 {
+      animation-delay: 4s;
+    }
+  </style>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  
+  <script>
+    function removeFavorite(city) {
+      if (confirm(`Are you sure you want to remove ${city} from your favorites?`)) {
+        window.location.href = `/remove-favorite?city=${encodeURIComponent(city)}`;
+      }
+    }
+  </script>
+</body>
+</html>
