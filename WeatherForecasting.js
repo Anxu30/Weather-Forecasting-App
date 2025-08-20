@@ -5,7 +5,7 @@ const mongoDB=require('connect-mongodb-session')(session);
 const user=require('./routes/user');
 const auth=require('./routes/auth');
 
-const DB_Path="mongodb+srv://root:Qwertyz%40123@anujchaudhary.ymavmtv.mongodb.net/WeatherForecast?retryWrites=true&w=majority&appName=AnujChaudhary";
+const DB_Path="mongodb+srv://root:*******%40***@anujchaudhary.ymavmtv.mongodb.net/WeatherForecast?retryWrites=true&w=majority&appName=AnujChaudhary";
 
 const port=1012;
 const app=express();
@@ -40,6 +40,7 @@ mongoose.connect(DB_Path).then(()=>{
 }).catch((err)=>{
   console.log(err);
 })
+
 
 
 
